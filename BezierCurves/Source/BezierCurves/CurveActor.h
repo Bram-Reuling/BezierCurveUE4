@@ -19,7 +19,7 @@ public:
 	TArray<FVector> CurvePath;
 
 	UFUNCTION()
-	void CalculatePath();
+	FVector CalculateBezierCurvePath(float T) const;
 
 	UFUNCTION()
 	void DrawPath();

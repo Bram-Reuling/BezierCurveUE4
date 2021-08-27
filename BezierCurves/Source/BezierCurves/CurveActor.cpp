@@ -26,10 +26,15 @@ void ACurveActor::Tick(float DeltaTime)
 
 }
 
-void ACurveActor::CalculatePath()
+FVector ACurveActor::CalculateBezierCurvePath(float T) const
 {
+	return (FMath::Pow(1 - T, 3) * PointZero)
+			+ (3 * FMath::Pow(1 - T, 2) * T * PointOne)
+			+ (3 * (1 - T) * FMath::Square(T) * PointTwo)
+			+ (FMath::Pow(T, 3) * PointThree); 
 }
 
 void ACurveActor::DrawPath()
 {
+	
 }
