@@ -15,6 +15,9 @@ public:
 	// Sets default values for this actor's properties
 	ACubicCurveActor();
 
+	UFUNCTION(BlueprintCallable)
+	void CreateCubicCurve();
+
 	UPROPERTY()
 	TArray<FVector> CurvePath;
 

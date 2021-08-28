@@ -16,6 +16,18 @@ ACubicCurveActor::ACubicCurveActor()
 void ACubicCurveActor::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+// Called every frame
+void ACubicCurveActor::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+}
+
+void ACubicCurveActor::CreateCubicCurve()
+{
+	FlushPersistentDebugLines(GetWorld());
+	CurvePath.Empty();
 	
 	float TValue = 0;
 
@@ -29,13 +41,6 @@ void ACubicCurveActor::BeginPlay()
 
 	if (!ShowControlPointLines) return;
 	DrawControlPointLines();
-}
-
-// Called every frame
-void ACubicCurveActor::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
 }
 
 FVector ACubicCurveActor::CalculateCubicBezierCurvePath(float T) const
@@ -53,13 +58,13 @@ void ACubicCurveActor::DrawPath()
 
 	for (int IndexOne = 0; IndexOne < PointsInPath; ++IndexOne)
 	{
-		DrawDebugLine(GetWorld(), CurvePath[IndexOne], CurvePath[IndexOne + 1], FColor::Red, true, -1, 0, 5);
+		DrawDebugLine(GetWorld(), CurvePath[IndexOne], CurvePath[IndexOne + 1], FColor::Red, true, 0.1f, 0, 5);
 	}
 }
 
 void ACubicCurveActor::DrawControlPointLines() const
 {
 	const FVector ActorLocation = GetActorLocation();
-	DrawDebugLine(GetWorld(), PointZero + ActorLocation, PointOne + ActorLocation, FColor::Blue, true, -1, 0, 1);
-	DrawDebugLine(GetWorld(), PointTwo + ActorLocation, PointThree + ActorLocation, FColor::Blue, true, -1, 0, 1);
+	DrawDebugLine(GetWorld(), PointZero + ActorLocation, PointOne + ActorLocation, FColor::Blue, true, 0.1f, 0, 1);
+	DrawDebugLine(GetWorld(), PointTwo + ActorLocation, PointThree + ActorLocation, FColor::Blue, true, 0.1f, 0, 1);
 }
