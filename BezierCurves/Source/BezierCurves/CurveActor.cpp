@@ -17,6 +17,15 @@ void ACurveActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	float TValue = 0;
+
+	while (TValue < 1.0f)
+	{
+		CurvePath.Add(CalculateCubicBezierCurvePath(TValue));
+		TValue += TIncreaseValue;
+	}
+
+	DrawPath();
 }
 
 // Called every frame
@@ -26,15 +35,21 @@ void ACurveActor::Tick(float DeltaTime)
 
 }
 
-FVector ACurveActor::CalculateBezierCurvePath(float T) const
+FVector ACurveActor::CalculateCubicBezierCurvePath(float T) const
 {
+	const FVector ActorLocation = GetActorLocation();
 	return (FMath::Pow(1 - T, 3) * PointZero)
 			+ (3 * FMath::Pow(1 - T, 2) * T * PointOne)
 			+ (3 * (1 - T) * FMath::Square(T) * PointTwo)
-			+ (FMath::Pow(T, 3) * PointThree); 
+			+ (FMath::Pow(T, 3) * PointThree) + ActorLocation; 
 }
 
 void ACurveActor::DrawPath()
 {
-	
+	const int PointsInPath = CurvePath.Num() - 1;
+
+	for (int IndexOne = 0; IndexOne < PointsInPath; ++IndexOne)
+	{
+		DrawDebugLine(GetWorld(), CurvePath[IndexOne], CurvePath[IndexOne + 1], FColor::Red, true, -1, 0, 5);
+	}
 }

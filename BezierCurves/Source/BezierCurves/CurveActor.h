@@ -19,7 +19,7 @@ public:
 	TArray<FVector> CurvePath;
 
 	UFUNCTION()
-	FVector CalculateBezierCurvePath(float T) const;
+	FVector CalculateCubicBezierCurvePath(float T) const;
 
 	UFUNCTION()
 	void DrawPath();
@@ -43,5 +43,8 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Control Points", Meta = (MakeEditWidget = true))
 	FVector PointThree;
+
+	UPROPERTY(EditAnywhere, Category = "Value Settings")
+	float TIncreaseValue = 0.125f;
 
 };
