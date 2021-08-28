@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "CurveActor.generated.h"
+#include "CubicCurveActor.generated.h"
 
 UCLASS()
-class BEZIERCURVES_API ACurveActor : public AActor
+class BEZIERCURVES_API ACubicCurveActor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ACurveActor();
+	ACubicCurveActor();
 
 	UPROPERTY()
 	TArray<FVector> CurvePath;

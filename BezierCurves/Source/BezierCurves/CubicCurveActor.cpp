@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "CurveActor.h"
+#include "CubicCurveActor.h"
 #include "DrawDebugHelpers.h"
 
 // Sets default values
-ACurveActor::ACurveActor()
+ACubicCurveActor::ACubicCurveActor()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -13,7 +13,7 @@ ACurveActor::ACurveActor()
 }
 
 // Called when the game starts or when spawned
-void ACurveActor::BeginPlay()
+void ACubicCurveActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
@@ -29,13 +29,13 @@ void ACurveActor::BeginPlay()
 }
 
 // Called every frame
-void ACurveActor::Tick(float DeltaTime)
+void ACubicCurveActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
-FVector ACurveActor::CalculateCubicBezierCurvePath(float T) const
+FVector ACubicCurveActor::CalculateCubicBezierCurvePath(float T) const
 {
 	const FVector ActorLocation = GetActorLocation();
 	return (FMath::Pow(1 - T, 3) * PointZero)
@@ -44,7 +44,7 @@ FVector ACurveActor::CalculateCubicBezierCurvePath(float T) const
 			+ (FMath::Pow(T, 3) * PointThree) + ActorLocation; 
 }
 
-void ACurveActor::DrawPath()
+void ACubicCurveActor::DrawPath()
 {
 	const int PointsInPath = CurvePath.Num() - 1;
 
