@@ -26,6 +26,9 @@ void ACubicCurveActor::BeginPlay()
 	}
 
 	DrawPath();
+
+	if (!ShowControlPointLines) return;
+	DrawControlPointLines();
 }
 
 // Called every frame
@@ -52,4 +55,11 @@ void ACubicCurveActor::DrawPath()
 	{
 		DrawDebugLine(GetWorld(), CurvePath[IndexOne], CurvePath[IndexOne + 1], FColor::Red, true, -1, 0, 5);
 	}
+}
+
+void ACubicCurveActor::DrawControlPointLines() const
+{
+	const FVector ActorLocation = GetActorLocation();
+	DrawDebugLine(GetWorld(), PointZero + ActorLocation, PointOne + ActorLocation, FColor::Blue, true, -1, 0, 1);
+	DrawDebugLine(GetWorld(), PointTwo + ActorLocation, PointThree + ActorLocation, FColor::Blue, true, -1, 0, 1);
 }

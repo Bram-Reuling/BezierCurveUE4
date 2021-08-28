@@ -24,6 +24,9 @@ public:
 	UFUNCTION()
 	void DrawPath();
 
+	UFUNCTION()
+	void DrawControlPointLines() const;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -46,5 +49,8 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Value Settings")
 	float TIncreaseValue = 0.125f;
+
+	UPROPERTY(EditAnywhere, Category = "Value Settings")
+	bool ShowControlPointLines = true;
 
 };
