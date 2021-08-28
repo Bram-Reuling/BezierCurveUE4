@@ -65,6 +65,6 @@ void ACubicCurveActor::DrawPath()
 void ACubicCurveActor::DrawControlPointLines() const
 {
 	const FVector ActorLocation = GetActorLocation();
-	DrawDebugLine(GetWorld(), PointZero + ActorLocation, PointOne + ActorLocation, FColor::Blue, true, 0.1f, 0, 1);
-	DrawDebugLine(GetWorld(), PointTwo + ActorLocation, PointThree + ActorLocation, FColor::Blue, true, 0.1f, 0, 1);
+	DrawDebugLine(GetWorld(), PointZero + ActorLocation, PointOne + ActorLocation, FColor::Blue, true, 0.1f, 0, 3);
+	DrawDebugLine(GetWorld(), PointTwo + ActorLocation, PointThree + ActorLocation, FColor::Blue, true, 0.1f, 0, 3);
 }
